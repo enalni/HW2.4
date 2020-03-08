@@ -16,7 +16,7 @@ class MainVC: UIViewController {
     var user: User!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
         
         //welcome.text = "Welcome , \(user!.login)!"
     }

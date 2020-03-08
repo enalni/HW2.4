@@ -12,6 +12,3 @@ struct User {
     
 }
 
-let inputData = User(login: "A", password: "E")
-
-

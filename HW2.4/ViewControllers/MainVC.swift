@@ -10,15 +10,14 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    var user: User!
+    
     @IBOutlet weak var welcome: UILabel!
     @IBOutlet weak var tapExit: UIButton!
     
-    var user: User!
-    
     override func viewDidLoad() {
-        super.viewDidLoad() 
-        
-        //welcome.text = "Welcome , \(user!.login)!"
+        super.viewDidLoad()
+        welcome.text = "Welcome, \(user!.login)"
     }
 
 }

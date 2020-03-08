@@ -18,39 +18,49 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = User(login: "A", password: "E")
+        user = User(login: "Alexander", password: "E")
         login.delegate = self
         password.delegate = self
     }
     
     // Функция для вывода алертов
-    private func openModal(txt: String) {
+    private func showAlert(txt: String) {
         let alert = UIAlertController(title: "", message: txt, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func actionForgotName() {
-        openModal(txt: " Используйте - А ")
+        showAlert(txt: " Используйте - Аlexander ")
     }
     
     @IBAction func actionForgotPassword() {
-        openModal(txt: " Используйте - Е ")
+        showAlert(txt: " Используйте - Е ")
     }
     
     // проверка на правильность данных
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         if login.text == "" {
-            openModal(txt: "Введите логин")
+            showAlert(txt: "Введите логин")
             return
         }
         if password.text == "" {
-            openModal(txt: "Введите пароль")
+            showAlert(txt: "Введите пароль")
             return
         }
         if login.text != user?.login || password.text != user?.password {
-            openModal(txt: "Неправильный логин / пароль")
+            showAlert(txt: "Неправильный логин / пароль")
             return
         }
+        
+        let tab = segue.destination as! UITabBarController
+        let vcWelcome = tab.viewControllers?.first as! MainVC
+        vcWelcome.user = user
+        
     }
+    
+    @IBAction func unwindSegue(segua: UIStoryboardSegue){}
+    
 }
